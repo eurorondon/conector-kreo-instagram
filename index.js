@@ -1,7 +1,7 @@
 // Conector KREO — Instagram
 //
-// Servidor mínimo: recibe mensajes de Instagram vía Meta, le pregunta a OpenAI usando
-// el Prompt Maestro personalizado del negocio, y responde en la misma conversación.
+// Servidor mínimo: recibe mensajes de Instagram vía Meta, le pregunta a Google Gemini
+// usando el Prompt Maestro personalizado del negocio, y responde en la misma conversación.
 //
 // Decisiones deliberadas (lecciones de Hellokreo, ver Obsidian
 // "06-Proyectos/Hellokreo/Despliegue Vercel - gotchas"):
@@ -19,7 +19,8 @@ app.use(express.json());
 
 const VERIFY_TOKEN = process.env.META_VERIFY_TOKEN;
 const PAGE_ACCESS_TOKEN = process.env.META_PAGE_ACCESS_TOKEN;
-const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
+const GEMINI_MODEL = process.env.GEMINI_MODEL || 'gemini-2.5-flash';
 const SYSTEM_PROMPT = process.env.SYSTEM_PROMPT;
 const BUSINESS_NAME = process.env.BUSINESS_NAME;
 
@@ -79,12 +80,12 @@ async function handleMessagingEvent(event) {
   const replyKey = `${senderId}:${text}`;
   if (recentBotReplies.has(replyKey)) return;
 
-  if (!OPENAI_API_KEY || !SYSTEM_PROMPT) {
-    console.error('[Conector KREO] Falta OPENAI_API_KEY o SYSTEM_PROMPT en las variables de entorno.');
+  if (!GEMINI_API_KEY || !SYSTEM_PROMPT) {
+    console.error('[Conector KREO] Falta GEMINI_API_KEY o SYSTEM_PROMPT en las variables de entorno.');
     return;
   }
 
-  const reply = await askOpenAI(text);
+  const reply = await askGemini(text);
   if (!reply) return;
 
   recentBotReplies.add(`${senderId}:${reply}`);
@@ -93,30 +94,25 @@ async function handleMessagingEvent(event) {
   await sendInstagramMessage(senderId, reply);
 }
 
-async function askOpenAI(userText) {
-  const response = await fetch('https://api.openai.com/v1/chat/completions', {
+async function askGemini(userText) {
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${GEMINI_API_KEY}`;
+  const response = await fetch(url, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${OPENAI_API_KEY}`,
-    },
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      model: 'gpt-4o-mini',
-      messages: [
-        { role: 'system', content: SYSTEM_PROMPT },
-        { role: 'user', content: userText },
-      ],
-      temperature: 0.7,
+      system_instruction: { parts: [{ text: SYSTEM_PROMPT }] },
+      contents: [{ role: 'user', parts: [{ text: userText }] }],
+      generationConfig: { temperature: 0.7 },
     }),
   });
 
   if (!response.ok) {
-    console.error('[Conector KREO] Error de OpenAI:', response.status, await response.text());
+    console.error('[Conector KREO] Error de Gemini:', response.status, await response.text());
     return null;
   }
 
   const data = await response.json();
-  return data.choices?.[0]?.message?.content?.trim() || null;
+  return data.candidates?.[0]?.content?.parts?.[0]?.text?.trim() || null;
 }
 
 async function sendInstagramMessage(recipientId, text) {
