@@ -1,0 +1,17 @@
+{
+  "name": "conector-kreo-instagram",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Conector KREO — conecta tu Vendedor IA a Instagram. Parte del infoproducto \"KREO — Crea tu Vendedor IA\".",
+  "main": "index.js",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

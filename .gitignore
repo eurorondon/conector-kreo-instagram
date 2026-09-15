@@ -1,0 +1,8 @@
+node_modules/
+.env
+.env.local
+.vercel
+
+# Lección de Hellokreo: .gitignore había excluido .env.example por accidente —
+# negación explícita para que siempre quede versionado.
+!.env.example
