@@ -6,7 +6,7 @@ de este archivo — solo haz clic en el botón de abajo.
 
 ## Instalar (sin programar)
 
-[![Deploy con Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=REPLACE_WITH_GITHUB_REPO_URL&env=META_PAGE_ACCESS_TOKEN,META_VERIFY_TOKEN,OPENAI_API_KEY,SYSTEM_PROMPT&envDescription=Estos%20datos%20los%20consigues%20siguiendo%20la%20L%C3%A1mina%208%20de%20tu%20gu%C3%ADa%20KREO&envLink=REPLACE_WITH_LINK_TO_GUIDE)
+[![Deploy con Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/eurorondon/conector-kreo-instagram&env=META_PAGE_ACCESS_TOKEN,META_VERIFY_TOKEN,OPENAI_API_KEY,SYSTEM_PROMPT&envDescription=Estos%20datos%20los%20consigues%20siguiendo%20la%20L%C3%A1mina%208%20de%20tu%20gu%C3%ADa%20KREO&envLink=https://github.com/eurorondon/conector-kreo-instagram%23readme)
 
 Sigue la **Lámina 8** de tu guía — ahí está el paso a paso completo de qué pegar en
 cada campo.
@@ -20,9 +20,8 @@ Abre `https://tu-conector.vercel.app/` (con tu propio dominio) — debe decir
 
 ## Nota para Kreo (no forma parte del kit del comprador)
 
-- Pendiente: publicar este repo en GitHub bajo una cuenta/org propia y reemplazar
-  `REPLACE_WITH_GITHUB_REPO_URL` y `REPLACE_WITH_LINK_TO_GUIDE` en el botón de deploy de
-  arriba con las URLs reales.
+- `envLink` del botón de deploy apunta a este mismo README por ahora — cuando la guía
+  completa tenga una URL pública, cambiar `envLink` para que apunte directo ahí.
 - Pendiente: probar el flujo de "Deploy to Vercel" de punta a punta con una cuenta de
   prueba antes de entregarlo a un comprador real.
 - `META_IG_USER_ID` y `META_APP_SECRET` quedan en `.env.example` mencionados en la guía
