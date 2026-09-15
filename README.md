@@ -6,10 +6,23 @@ de este archivo — solo haz clic en el botón de abajo.
 
 ## Instalar (sin programar)
 
-[![Deploy con Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/eurorondon/conector-kreo-instagram&env=META_PAGE_ACCESS_TOKEN,META_VERIFY_TOKEN,GEMINI_API_KEY,SYSTEM_PROMPT&envDescription=Estos%20datos%20los%20consigues%20siguiendo%20la%20L%C3%A1mina%208%20de%20tu%20gu%C3%ADa%20KREO&envLink=https://github.com/eurorondon/conector-kreo-instagram%23readme)
+Sigue la **Lámina 8** de tu guía — ahí está el paso a paso completo. Resumen:
 
-Sigue la **Lámina 8** de tu guía — ahí está el paso a paso completo de qué pegar en
-cada campo.
+1. Haz clic en **"Fork"** (arriba a la derecha de este repo) para crear tu propia copia.
+2. Ve a [vercel.com](https://vercel.com) → inicia sesión con la misma cuenta de GitHub.
+3. **"Add New..." → "Project"** → busca tu copia (tu fork) → **"Import"**.
+4. Pega estas 4 variables (los nombres exactos, uno por uno):
+   - `META_PAGE_ACCESS_TOKEN`
+   - `META_VERIFY_TOKEN`
+   - `GEMINI_API_KEY`
+   - `SYSTEM_PROMPT`
+5. Clic en **"Deploy"**.
+
+> ⚠️ Antes usábamos el botón "Deploy to Vercel" de un clic, pero en pruebas reales
+> falla con el error "el repositorio es privado o no existe" cuando la cuenta de
+> Vercel/GitHub del comprador tiene su instalación de la app de Vercel limitada a
+> "solo repositorios seleccionados" (muy común). El camino Fork + Import de arriba es
+> más largo por 2-3 clics pero funciona siempre, sin depender de esos permisos.
 
 ## Verificar que quedó bien instalado
 
@@ -20,10 +33,13 @@ Abre `https://tu-conector.vercel.app/` (con tu propio dominio) — debe decir
 
 ## Nota para Kreo (no forma parte del kit del comprador)
 
-- `envLink` del botón de deploy apunta a este mismo README por ahora — cuando la guía
-  completa tenga una URL pública, cambiar `envLink` para que apunte directo ahí.
-- Pendiente: probar el flujo de "Deploy to Vercel" de punta a punta con una cuenta de
-  prueba antes de entregarlo a un comprador real.
+- Probado en vivo 2026-09-15: el botón "Deploy to Vercel" (clone automático) falla con
+  cuentas de Vercel/GitHub que tienen la instalación de la GitHub App limitada a "solo
+  repositorios seleccionados" — error "el repositorio es privado o no existe" aunque el
+  repo es público. Se reemplazó por Fork + Import como método principal (más robusto).
+- Efecto secundario de este cambio: como Import no tiene `envDescription`/`envLink`
+  (esos parámetros solo existen en el flujo de "Deploy"), el comprador debe escribir el
+  nombre de cada variable a mano — por eso la Lámina 8 los lista explícitamente.
 - `META_IG_USER_ID` y `META_APP_SECRET` quedan en `.env.example` mencionados en la guía
   pero el servidor todavía no los usa (el primero es informativo, el segundo queda
   reservado para cuando se valide la firma de las peticiones de Meta — no es
