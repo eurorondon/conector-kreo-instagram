@@ -40,9 +40,11 @@ Abre `https://tu-conector.vercel.app/` (con tu propio dominio) — debe decir
 - Efecto secundario de este cambio: como Import no tiene `envDescription`/`envLink`
   (esos parámetros solo existen en el flujo de "Deploy"), el comprador debe escribir el
   nombre de cada variable a mano — por eso la Lámina 8 los lista explícitamente.
-- `META_IG_USER_ID` y `META_APP_SECRET` quedan en `.env.example` mencionados en la guía
-  pero el servidor todavía no los usa (el primero es informativo, el segundo queda
-  reservado para cuando se valide la firma de las peticiones de Meta — no es
-  estrictamente necesario para el MVP).
+- Probado en vivo 2026-09-15 (parte 2): Vercel detecta las variables a rellenar
+  directamente desde `.env.example`, así que en un momento tuvo 8 campos (incluía
+  `META_IG_USER_ID` y `META_APP_SECRET`, que el servidor nunca usa) y confundía al
+  comprador sobre cuáles eran obligatorias. Se limpió `.env.example` a solo lo que el
+  código usa de verdad: 4 obligatorias + 2 opcionales. Regla para el futuro: todo lo que
+  se agregue a este archivo aparece tal cual en el formulario de Vercel del comprador.
 - Sin base de datos ni Redis a propósito: el negocio del comprador queda 100%
   configurado vía variables de entorno (`SYSTEM_PROMPT`), sin estado que persistir.
