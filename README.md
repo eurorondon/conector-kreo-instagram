@@ -14,7 +14,7 @@ Sigue la **Lámina 8** de tu guía — ahí está el paso a paso completo. Resum
 4. Pega estas 4 variables (los nombres exactos, uno por uno):
    - `META_PAGE_ACCESS_TOKEN`
    - `META_VERIFY_TOKEN`
-   - `GEMINI_API_KEY`
+   - `DEEPSEEK_API_KEY`
    - `SYSTEM_PROMPT`
 5. Clic en **"Deploy"**.
 

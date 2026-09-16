@@ -1,7 +1,13 @@
 // Conector KREO — Instagram
 //
-// Servidor mínimo: recibe mensajes de Instagram vía Meta, le pregunta a Google Gemini
+// Servidor mínimo: recibe mensajes de Instagram vía Meta, le pregunta a DeepSeek
 // usando el Prompt Maestro personalizado del negocio, y responde en la misma conversación.
+//
+// Se usa DeepSeek en vez de Gemini (decisión 2026-09-16): Google Cloud exige elegir un
+// país al crear el proyecto —incluso para el tier gratis— y Venezuela (mercado objetivo
+// de Kreo) no aparece en esa lista. DeepSeek no pide país en ningún paso del registro ni
+// del pago, solo tarjeta/PayPal — sí requiere cargar saldo (no tiene tier gratis, se
+// confirmó `402 Insufficient Balance` con $0), pero con ~$2 alcanza para probarlo.
 //
 // Decisiones deliberadas (lecciones de Hellokreo, ver Obsidian
 // "06-Proyectos/Hellokreo/Despliegue Vercel - gotchas"):
@@ -19,8 +25,8 @@ app.use(express.json());
 
 const VERIFY_TOKEN = process.env.META_VERIFY_TOKEN;
 const PAGE_ACCESS_TOKEN = process.env.META_PAGE_ACCESS_TOKEN;
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
-const GEMINI_MODEL = process.env.GEMINI_MODEL || 'gemini-2.5-flash';
+const DEEPSEEK_API_KEY = process.env.DEEPSEEK_API_KEY;
+const DEEPSEEK_MODEL = process.env.DEEPSEEK_MODEL || 'deepseek-chat';
 const SYSTEM_PROMPT = process.env.SYSTEM_PROMPT;
 const BUSINESS_NAME = process.env.BUSINESS_NAME;
 
@@ -80,12 +86,12 @@ async function handleMessagingEvent(event) {
   const replyKey = `${senderId}:${text}`;
   if (recentBotReplies.has(replyKey)) return;
 
-  if (!GEMINI_API_KEY || !SYSTEM_PROMPT) {
-    console.error('[Conector KREO] Falta GEMINI_API_KEY o SYSTEM_PROMPT en las variables de entorno.');
+  if (!DEEPSEEK_API_KEY || !SYSTEM_PROMPT) {
+    console.error('[Conector KREO] Falta DEEPSEEK_API_KEY o SYSTEM_PROMPT en las variables de entorno.');
     return;
   }
 
-  const reply = await askGemini(text);
+  const reply = await askDeepSeek(text);
   if (!reply) return;
 
   recentBotReplies.add(`${senderId}:${reply}`);
@@ -94,25 +100,30 @@ async function handleMessagingEvent(event) {
   await sendInstagramMessage(senderId, reply);
 }
 
-async function askGemini(userText) {
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${GEMINI_API_KEY}`;
-  const response = await fetch(url, {
+async function askDeepSeek(userText) {
+  const response = await fetch('https://api.deepseek.com/chat/completions', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${DEEPSEEK_API_KEY}`,
+    },
     body: JSON.stringify({
-      system_instruction: { parts: [{ text: SYSTEM_PROMPT }] },
-      contents: [{ role: 'user', parts: [{ text: userText }] }],
-      generationConfig: { temperature: 0.7 },
+      model: DEEPSEEK_MODEL,
+      messages: [
+        { role: 'system', content: SYSTEM_PROMPT },
+        { role: 'user', content: userText },
+      ],
+      temperature: 0.7,
     }),
   });
 
   if (!response.ok) {
-    console.error('[Conector KREO] Error de Gemini:', response.status, await response.text());
+    console.error('[Conector KREO] Error de DeepSeek:', response.status, await response.text());
     return null;
   }
 
   const data = await response.json();
-  return data.candidates?.[0]?.content?.parts?.[0]?.text?.trim() || null;
+  return data.choices?.[0]?.message?.content?.trim() || null;
 }
 
 async function sendInstagramMessage(recipientId, text) {
