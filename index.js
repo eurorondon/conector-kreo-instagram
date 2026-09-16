@@ -18,6 +18,7 @@
 //   revienta con FUNCTION_INVOCATION_FAILED.
 
 const express = require('express');
+const path = require('path');
 const { renderPrivacyPage } = require('./privacy');
 
 const app = express();
@@ -42,6 +43,12 @@ app.get('/', (_req, res) => {
 
 app.get('/privacy', (_req, res) => {
   res.status(200).type('html').send(renderPrivacyPage(BUSINESS_NAME));
+});
+
+// Temporal: vista previa de la guía mientras se decide dónde publicarla de forma
+// definitiva (Canva/Figma). Borrar esta ruta y guia.html cuando ya no se necesite.
+app.get('/guia', (_req, res) => {
+  res.status(200).sendFile(path.join(__dirname, 'guia.html'));
 });
 
 // Paso "Pega el link de tu Conector" de la guía — Meta llama a este endpoint para
