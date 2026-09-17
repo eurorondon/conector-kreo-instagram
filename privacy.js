@@ -30,7 +30,7 @@ function renderPrivacyPage(businessName) {
 
   <h2>Cómo se usa</h2>
   <p>La información se usa exclusivamente para generar una respuesta automática a través
-  de un modelo de inteligencia artificial (OpenAI) y no se comparte con terceros ni se
+  de un modelo de inteligencia artificial (DeepSeek) y no se comparte con terceros ni se
   usa con fines distintos a la atención al cliente.</p>
 
   <h2>Contacto</h2>
