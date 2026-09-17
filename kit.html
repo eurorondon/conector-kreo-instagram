@@ -1,0 +1,136 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light}body{margin:0}</style></head><body>
+<title>Tu Kit — KREO Vendedor IA</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,900&family=Public+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+  :root{
+    --bg:#F6F3EC; --surface:#FFFFFF; --surface-2:#FBF9F4;
+    --ink:#1B1F1A; --ink-soft:#5E6459; --ink-faint:#8B9184;
+    --accent:#1E7A4A; --accent-ink:#0F4A2C; --accent-soft:#E2F0E5;
+    --line:#E4DFD2;
+    --shadow: 0 1px 2px rgba(27,31,26,.04), 0 8px 24px -12px rgba(27,31,26,.12);
+  }
+  *{box-sizing:border-box;}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:"Public Sans", ui-sans-serif, system-ui, sans-serif;
+    padding-inline:20px; line-height:1.55;
+  }
+  h1,h2{ font-family:"Fraunces", Georgia, serif; font-weight:700; letter-spacing:-.01em; }
+  .wrap{ max-width:640px; margin-inline:auto; padding-block:40px 60px; }
+  .kicker{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--accent-soft); color:var(--accent-ink);
+    font-size:.72rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase;
+    padding:6px 12px; border-radius:100px; margin-bottom:16px;
+  }
+  h1{ font-size:clamp(1.6rem, 5vw, 2.2rem); margin:0 0 12px; }
+  .sub{ font-size:1rem; color:var(--ink-soft); margin:0 0 30px; }
+
+  .item{
+    display:flex; align-items:center; gap:14px;
+    background:var(--surface); border:1px solid var(--line); border-radius:14px;
+    box-shadow:var(--shadow); padding:16px 18px; margin-bottom:14px;
+    text-decoration:none; color:var(--ink);
+  }
+  .item .icon{ font-size:1.5rem; flex:0 0 auto; }
+  .item .txt b{ display:block; font-size:.98rem; }
+  .item .txt span{ display:block; font-size:.82rem; color:var(--ink-soft); margin-top:2px; }
+  .item .arrow{ margin-left:auto; color:var(--ink-faint); font-size:1.2rem; }
+  .item:hover{ border-color:var(--accent); }
+
+  .section-title{ font-size:.78rem; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-faint); margin:28px 0 10px; }
+  .section-title:first-of-type{ margin-top:0; }
+
+  ul.checklist{ list-style:none; padding:0; margin:10px 0 0; display:grid; gap:10px; }
+  ul.checklist li{ display:flex; align-items:flex-start; gap:10px; font-size:.92rem; }
+  ul.checklist input{ margin-top:3px; accent-color:var(--accent); width:16px; height:16px; flex:0 0 auto; }
+
+  .callout{
+    background:var(--accent-soft); color:var(--accent-ink);
+    border-radius:12px; padding:14px 16px; font-weight:600; font-size:.9rem;
+    margin-top:24px;
+  }
+  footer{ text-align:center; color:var(--ink-faint); font-size:.8rem; margin-top:40px; }
+</style>
+
+<div class="wrap">
+  <span class="kicker">Gracias por tu compra</span>
+  <h1>Tu Kit — KREO Vendedor IA</h1>
+  <p class="sub">Aquí tienes todo lo necesario. Sigue el orden de arriba hacia abajo.</p>
+
+  <div class="section-title">1. Guía completa</div>
+  <a class="item" href="/guia" target="_blank">
+    <span class="icon">📖</span>
+    <span class="txt"><b>Guía paso a paso (12 láminas)</b><span>Léela primero — te explica todo el proceso</span></span>
+    <span class="arrow">→</span>
+  </a>
+
+  <div class="section-title">2. Descargables</div>
+  <a class="item" href="/kit/Prompt-Maestro-y-Plantillas.txt" download>
+    <span class="icon">📝</span>
+    <span class="txt"><b>Prompt Maestro + Plantillas + Objeciones</b><span>El corazón de tu vendedor IA — personalízalo con tu negocio</span></span>
+    <span class="arrow">⬇</span>
+  </a>
+  <a class="item" href="/kit/Bonus-Agenda-citas-Calcom.txt" download>
+    <span class="icon">📅</span>
+    <span class="txt"><b>Bonus: Agenda citas con Cal.com</b><span>Solo si tu negocio agenda citas — opcional</span></span>
+    <span class="arrow">⬇</span>
+  </a>
+
+  <div class="section-title">3. Instala tu Conector</div>
+  <a class="item" href="https://github.com/eurorondon/conector-kreo-instagram" target="_blank">
+    <span class="icon">⚙️</span>
+    <span class="txt"><b>Repo del Conector KREO</b><span>Haz clic en "Fork" — instrucciones detalladas en la Lámina 8</span></span>
+    <span class="arrow">→</span>
+  </a>
+
+  <div class="section-title">4. Checklist antes de publicar</div>
+  <ul class="checklist" id="checklist"></ul>
+
+  <div class="callout">¿Alguna duda instalando tu Conector? Escríbeme por WhatsApp y te ayudo.</div>
+
+  <footer>KREO — Crea tu Vendedor IA</footer>
+</div>
+
+<script>
+(function(){
+  var items = [
+    "El Prompt Maestro está personalizado con la info de mi negocio",
+    "La información de mi negocio está completa (productos, precios, políticas)",
+    "Probé diferentes preguntas",
+    "Responde como quiero (tono y estilo)",
+    "Maneja objeciones correctamente",
+    "Agenda o dirige al siguiente paso",
+    "Pegué el link de mi política de privacidad (.../privacy) en Meta — el texto ya viene escrito",
+    "Está conectada a Instagram y verificada en verde",
+    "Publiqué la app en Meta",
+    "Hice una prueba final desde una cuenta que no es la mía"
+  ];
+  var list = document.getElementById('checklist');
+  var saved = {};
+  try{ saved = JSON.parse(localStorage.getItem('kreo-kit-checklist')||'{}'); }catch(e){}
+  items.forEach(function(t, idx){
+    var li = document.createElement('li');
+    var cb = document.createElement('input');
+    cb.type = 'checkbox';
+    cb.id = 'kchk-'+idx;
+    cb.checked = !!saved[idx];
+    cb.addEventListener('change', function(){
+      try{
+        var s = JSON.parse(localStorage.getItem('kreo-kit-checklist')||'{}');
+        s[idx] = cb.checked;
+        localStorage.setItem('kreo-kit-checklist', JSON.stringify(s));
+      }catch(e){}
+    });
+    var label = document.createElement('label');
+    label.htmlFor = 'kchk-'+idx;
+    label.textContent = t;
+    li.appendChild(cb);
+    li.appendChild(label);
+    list.appendChild(li);
+  });
+})();
+</script>
+
+</body></html>

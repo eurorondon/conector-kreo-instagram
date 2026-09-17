@@ -59,6 +59,15 @@ app.get('/comprar', (_req, res) => {
   res.status(200).sendFile(path.join(__dirname, 'comprar.html'));
 });
 
+// Página de entrega del kit — link único que se manda por WhatsApp tras
+// confirmar el pago manualmente (no listada en ningún lado público). El
+// middleware express.static de arriba sirve los archivos dentro de /kit
+// (ej. /kit/Prompt-Maestro-y-Plantillas.txt); esta ruta sirve la página en sí.
+app.get('/kit', (_req, res) => {
+  res.status(200).sendFile(path.join(__dirname, 'kit.html'));
+});
+app.use('/kit', express.static(path.join(__dirname, 'kit')));
+
 // Paso "Pega el link de tu Conector" de la guía — Meta llama a este endpoint para
 // verificar la URL antes de aceptarla.
 app.get('/webhook', (req, res) => {
