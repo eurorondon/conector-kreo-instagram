@@ -1,8 +1,9 @@
 node_modules/
-.env
-.env.local
+.env*
 .vercel
 
 # Lección de Hellokreo: .gitignore había excluido .env.example por accidente —
-# negación explícita para que siempre quede versionado.
+# negación explícita para que siempre quede versionado. Debe ir DESPUÉS de
+# cualquier patrón .env* (incluido el que agrega `vercel link` automáticamente),
+# o vuelve a excluirlo sin querer.
 !.env.example

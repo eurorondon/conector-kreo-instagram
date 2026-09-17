@@ -1,0 +1,133 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light}body{margin:0}</style></head><body>
+<title>KREO — Crea tu Vendedor IA</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,900&family=Public+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+  :root{
+    --bg:#F6F3EC; --surface:#FFFFFF; --surface-2:#FBF9F4;
+    --ink:#1B1F1A; --ink-soft:#5E6459; --ink-faint:#8B9184;
+    --accent:#1E7A4A; --accent-ink:#0F4A2C; --accent-soft:#E2F0E5;
+    --line:#E4DFD2;
+    --shadow: 0 1px 2px rgba(27,31,26,.04), 0 8px 24px -12px rgba(27,31,26,.12);
+  }
+  *{box-sizing:border-box;}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:"Public Sans", ui-sans-serif, system-ui, sans-serif;
+    padding-inline:20px; line-height:1.55;
+  }
+  h1,h2,.display{ font-family:"Fraunces", Georgia, serif; font-weight:700; letter-spacing:-.01em; }
+  code{ font-family:"IBM Plex Mono", ui-monospace, monospace; background:var(--surface-2); padding:2px 6px; border-radius:5px; }
+  .wrap{ max-width:640px; margin-inline:auto; padding-block:40px 60px; }
+
+  .kicker{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--accent-soft); color:var(--accent-ink);
+    font-size:.72rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase;
+    padding:6px 12px; border-radius:100px; margin-bottom:16px;
+  }
+  h1{ font-size:clamp(1.8rem, 6vw, 2.6rem); line-height:1.08; margin:0 0 12px; }
+  .sub{ font-size:1.05rem; color:var(--ink-soft); margin:0 0 24px; max-width:48ch; }
+  .price-row{ display:flex; align-items:baseline; gap:10px; margin-bottom:28px; }
+  .price{ font-family:"Fraunces",serif; font-weight:800; font-size:2.4rem; color:var(--accent-ink); }
+  .price-note{ color:var(--ink-faint); font-size:.85rem; }
+
+  ul.feat{ list-style:none; padding:0; margin:0 0 32px; display:grid; gap:10px; }
+  ul.feat li{ display:flex; gap:10px; align-items:flex-start; font-size:.96rem; }
+  ul.feat li::before{ content:"✓"; color:var(--accent); font-weight:800; flex:0 0 auto; }
+
+  section.card{
+    background:var(--surface); border:1px solid var(--line); border-radius:18px;
+    box-shadow:var(--shadow); padding:26px clamp(18px,4vw,30px); margin-bottom:20px;
+  }
+  section.card h2{ font-size:1.3rem; margin:0 0 6px; }
+  section.card .lead{ color:var(--ink-soft); margin:0 0 18px; font-size:.92rem; }
+
+  .pay-grid{ display:grid; gap:16px; }
+  .pay-method{
+    border:1px solid var(--line); border-radius:14px; padding:18px;
+    background:var(--surface-2);
+  }
+  .pay-method h3{ margin:0 0 10px; font-size:1.02rem; display:flex; align-items:center; gap:8px; }
+  .pay-method dl{ margin:0; display:grid; grid-template-columns:auto 1fr; gap:6px 12px; font-size:.92rem; }
+  .pay-method dt{ color:var(--ink-faint); }
+  .pay-method dd{ margin:0; font-weight:600; }
+  .qr-wrap{ text-align:center; margin-top:14px; }
+  .qr-wrap img{ max-width:220px; width:100%; border-radius:12px; border:1px solid var(--line); }
+  .qr-wrap p{ font-size:.8rem; color:var(--ink-faint); margin-top:8px; }
+
+  .callout{
+    background:var(--accent-soft); color:var(--accent-ink);
+    border-radius:12px; padding:14px 16px; font-weight:600; font-size:.9rem;
+    margin-top:8px;
+  }
+
+  .cta{
+    display:block; text-align:center; text-decoration:none;
+    background:var(--accent); color:#fff; font-weight:800; font-size:1.05rem;
+    padding:16px 20px; border-radius:100px; margin-top:20px;
+  }
+  .cta:hover{ opacity:.92; }
+  .cta-note{ text-align:center; color:var(--ink-faint); font-size:.8rem; margin-top:10px; }
+
+  footer{ text-align:center; color:var(--ink-faint); font-size:.8rem; margin-top:30px; }
+</style>
+
+<div class="wrap">
+  <span class="kicker">Guía práctica · Plantillas · Prompts · Conector incluido</span>
+  <h1>KREO — Crea tu<br>Vendedor IA</h1>
+  <p class="sub">Arma tu propio vendedor con IA en una tarde: guía completa + Prompt Maestro + plantillas + Conector de Instagram listo para instalar.</p>
+  <div class="price-row">
+    <span class="price">$17.99</span>
+    <span class="price-note">USD · pago único</span>
+  </div>
+
+  <ul class="feat">
+    <li>Guía completa (12 láminas + bonus de agendamiento)</li>
+    <li>Prompt Maestro + 4 plantillas por nicho</li>
+    <li>+20 respuestas de manejo de objeciones</li>
+    <li>Conector KREO — instálalo tú mismo con un clic, sin programar</li>
+  </ul>
+
+  <section class="card">
+    <h2>Cómo pagar</h2>
+    <p class="lead">Elige el método que prefieras. Después de pagar, avísame por WhatsApp (botón abajo) para confirmarte y enviarte el kit.</p>
+
+    <div class="pay-grid">
+      <div class="pay-method">
+        <h3>📲 Pago Móvil</h3>
+        <dl>
+          <dt>Banco</dt><dd>Banco de Venezuela</dd>
+          <dt>Cédula</dt><dd><code>[TU_CEDULA]</code></dd>
+          <dt>Teléfono</dt><dd><code>[TU_TELEFONO]</code></dd>
+          <dt>Monto</dt><dd>Equivalente a $17.99 a la tasa BCV del día</dd>
+        </dl>
+        <div class="callout">⚠️ Confirma la tasa BCV del día antes de transferir — cambia diario.</div>
+      </div>
+
+      <div class="pay-method">
+        <h3>🟡 Binance (USDT)</h3>
+        <dl>
+          <dt>Pay ID</dt><dd>Javieroca</dd>
+          <dt>Monto</dt><dd>$17.99 en USDT</dd>
+        </dl>
+        <div class="qr-wrap">
+          <img src="/assets/binance-qr.jpeg" alt="Código QR de Binance Pay — Javieroca">
+          <p>Escanea con tu app de Binance y envía $17.99 en USDT</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <a class="cta" id="whatsapp-cta" href="#" target="_blank" rel="noopener">Ya pagué — avisar por WhatsApp</a>
+  <p class="cta-note">Se abre WhatsApp con un mensaje listo — solo completa tus datos y envíalo.</p>
+
+  <footer>KREO — Crea tu Vendedor IA · Pago único, sin suscripciones</footer>
+</div>
+
+<script>
+  var msg = "Hola! Ya pagué el kit KREO - Crea tu Vendedor IA ($17.99).\n\nMi nombre: \nMi correo (para enviarme el kit): \nPagué por: [Pago Móvil / Binance]\nReferencia o monto enviado: ";
+  document.getElementById('whatsapp-cta').href = "https://wa.me/584245116397?text=" + encodeURIComponent(msg);
+</script>
+
+</body></html>

@@ -23,6 +23,7 @@ const { renderPrivacyPage } = require('./privacy');
 
 const app = express();
 app.use(express.json());
+app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
 const VERIFY_TOKEN = process.env.META_VERIFY_TOKEN;
 const PAGE_ACCESS_TOKEN = process.env.META_PAGE_ACCESS_TOKEN;
@@ -49,6 +50,13 @@ app.get('/privacy', (_req, res) => {
 // definitiva (Canva/Figma). Borrar esta ruta y guia.html cuando ya no se necesite.
 app.get('/guia', (_req, res) => {
   res.status(200).sendFile(path.join(__dirname, 'guia.html'));
+});
+
+// Landing de venta del infoproducto — Pago Móvil + Binance, verificación manual
+// por WhatsApp (sin pasarela de pago todavía). Borrar cuando se migre a un
+// checkout real (Hotmart/Payhip/PagoFácil) o a un proyecto/dominio propio.
+app.get('/comprar', (_req, res) => {
+  res.status(200).sendFile(path.join(__dirname, 'comprar.html'));
 });
 
 // Paso "Pega el link de tu Conector" de la guía — Meta llama a este endpoint para
