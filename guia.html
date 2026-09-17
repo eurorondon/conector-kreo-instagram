@@ -344,8 +344,25 @@
 
   <!-- LAMINA 6 -->
   <section class="lamina" id="lamina-6">
-    <div class="lamina-head"><span class="num">06</span><h2>El Prompt Maestro</h2></div>
-    <p class="lead">Este es el corazón de tu vendedor IA. Cópialo, pégalo y personalízalo con la información de tu negocio.</p>
+    <div class="lamina-head"><span class="num">06</span><h2>Entrena a tu IA con la información de tu negocio</h2></div>
+    <p class="lead">Antes de personalizar tu Prompt Maestro (siguiente lámina), reúne esta información real de tu negocio — cada punto va a ir dentro de un <code>[CORCHETE]</code>:</p>
+    <ul class="feat">
+      <li>Descripción de tu negocio</li>
+      <li>Productos o servicios (con precios)</li>
+      <li>Zonas de atención / horarios</li>
+      <li>Políticas (pagos, cancelaciones, garantías)</li>
+      <li>Preguntas frecuentes</li>
+      <li>Cómo manejar objeciones</li>
+      <li>Cuándo transferir la conversación a un humano</li>
+      <li>Link de agendamiento (opcional) — solo si tu negocio agenda citas: conecta tu Google Calendar a Cal.com o Calendly (gratis) y pega el link</li>
+    </ul>
+    <div class="callout">¿No sabes cómo redactar cada punto? En la lámina 9 (Plantillas por nicho) hay ejemplos ya resueltos según tu tipo de negocio — cópialos como guía.</div>
+  </section>
+
+  <!-- LAMINA 7 -->
+  <section class="lamina" id="lamina-7">
+    <div class="lamina-head"><span class="num">07</span><h2>El Prompt Maestro</h2></div>
+    <p class="lead">Cópialo, pégalo y reemplaza los corchetes con la información que acabas de reunir.</p>
     <div class="code-wrap">
       <button class="copy-btn" onclick="copyPrompt(this)">Copiar</button>
       <pre class="code mono" id="prompt-text">Eres un asesor de ventas para [NOMBRE DEL NEGOCIO], una
@@ -362,23 +379,6 @@ lenguaje claro y natural.
 [... aquí va la plantilla completa en tu kit ...]</pre>
     </div>
     <div class="callout">En el kit encontrarás la versión completa del prompt y ejemplos listos para diferentes tipos de negocio.</div>
-  </section>
-
-  <!-- LAMINA 7 -->
-  <section class="lamina" id="lamina-7">
-    <div class="lamina-head"><span class="num">07</span><h2>Entrena a tu IA con la información de tu negocio</h2></div>
-    <p class="lead">Esto no es un paso aparte — es la información que va dentro de los <code>[CORCHETES]</code> del Prompt Maestro (lámina 6). Reúnela y vuelve a pegarla ahí:</p>
-    <ul class="feat">
-      <li>Descripción de tu negocio</li>
-      <li>Productos o servicios (con precios)</li>
-      <li>Zonas de atención / horarios</li>
-      <li>Políticas (pagos, cancelaciones, garantías)</li>
-      <li>Preguntas frecuentes</li>
-      <li>Cómo manejar objeciones</li>
-      <li>Cuándo transferir la conversación a un humano</li>
-      <li>Link de agendamiento (opcional) — solo si tu negocio agenda citas: conecta tu Google Calendar a Cal.com o Calendly (gratis) y pega el link</li>
-    </ul>
-    <div class="callout">¿No sabes cómo redactar cada punto? En la lámina 9 (Plantillas por nicho) hay ejemplos ya resueltos según tu tipo de negocio — cópialos como guía.</div>
   </section>
 
   <!-- LAMINA 8 -->
@@ -432,7 +432,7 @@ lenguaje claro y natural.
     <div class="lamina-head"><span class="num">A</span><h2>Tu plan de 30-60 minutos</h2></div>
     <p class="lead">Amarra las láminas 6, 7 y 8 en una sola secuencia, con tiempo estimado por paso.</p>
     <ol class="steps timed">
-      <li><div class="step-text"><b>Copia el Prompt Maestro</b><span class="time">2 min</span><br>Lámina 6, o el archivo <code>Prompt Maestro.txt</code> del kit.</div></li>
+      <li><div class="step-text"><b>Copia el Prompt Maestro</b><span class="time">2 min</span><br>Lámina 7, o el archivo <code>Prompt Maestro.txt</code> del kit.</div></li>
       <li><div class="step-text"><b>Personalízalo con tu negocio</b><span class="time">10-20 min</span><br>Reemplaza cada corchete con tu info real: nombre, productos, precios, zonas, políticas, FAQ, objeciones.</div></li>
       <li><div class="step-text"><b>Consigue tu API key de DeepSeek</b><span class="time">5 min</span><br>platform.deepseek.com → carga ~$2 de saldo (tarjeta o PayPal, sin país) → "API keys" → crea y copia tu clave de inmediato.</div></li>
       <li><div class="step-text"><b>Crea tu app de Meta y genera tu clave de acceso</b><span class="time">10-15 min</span><br>Pasos 1-4 de la lámina 8. Al terminar tienes en mano la clave que necesita el Conector.</div></li>
@@ -503,7 +503,7 @@ lenguaje claro y natural.
       <li><div class="step-text"><b>Conecta tu Google Calendar</b><span class="time">1 min</span><br>"Apps" → "Google Calendar" → "Install" → autoriza. Google te pide permisos: <b>marca las dos casillas (o "Seleccionar todos")</b> — si dejas solo una, puede fallar al detectar tu disponibilidad. Desde ahí ya sabe qué horas tienes ocupadas — no subes nada a mano.</div></li>
       <li><div class="step-text"><b>Define tu disponibilidad</b><span class="time">3 min</span><br>"Availability" → tus días/horas por defecto (ej. Lun-Vie 9am-5pm). Cal.com resta lo ya ocupado en tu calendario.</div></li>
       <li><div class="step-text"><b>Ajusta tu tipo de cita y copia el link</b><span class="time">3 min</span><br>En el menú se llama "Enlaces" — ya tienes 3 de ejemplo ("Reunión Secreta", "Reunión de 15 min", "Reunión de 30 min"). Edita el que más se parezca (Título y Duración) y copia su link (campo "URL" o el ícono 🔗) — no hace falta tocar los demás, tu IA solo comparte el que tú elijas.</div></li>
-      <li><div class="step-text"><b>Pega el link en tu Prompt Maestro</b><span class="time">1 min</span><br>Reemplaza el placeholder en el bloque "Cómo agendar citas" (lámina 6).</div></li>
+      <li><div class="step-text"><b>Pega el link en tu Prompt Maestro</b><span class="time">1 min</span><br>Reemplaza el placeholder en el bloque "Cómo agendar citas" (lámina 7).</div></li>
     </ol>
     <div class="callout">Total: ~10-12 min. Tu vendedor IA solo comparte horas que de verdad tienes libres — sin tocar código. ¿Ya usas Calendly? También funciona igual, solo que su plan gratis limita a 1 tipo de evento.</div>
     <p class="lead" style="margin-top:16px;font-size:.82rem;">¿Tu cliente necesita cuenta para agendar? No, entra directo y solo pone su nombre/correo. ¿Puede ver otras citas ya agendadas? Tampoco — la página solo muestra horas libres, nunca los datos de otras reservas.</p>
